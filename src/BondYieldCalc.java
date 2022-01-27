@@ -9,6 +9,10 @@ public class BondYieldCalc {
     private static HashMap<String, Double> mapperYield = new HashMap<String, Double>();
 
     public static double CalcPrice(double coupon, int years, double face, double rate) {
+
+        if(coupon == 0. ){
+            return 0.;
+        }
   
 
         BondInfoPrice newBond = new BondInfoPrice(coupon, years, face, rate);
@@ -48,6 +52,9 @@ public class BondYieldCalc {
         // r)^-Years = Price
         // TODO; SOLVE FOR r
 
+
+    
+
         BondInfoYield newBondYield = new BondInfoYield(coupon, years, face, price);
 
         if(mapperYield.get(newBondYield.toString()) == null){
@@ -68,7 +75,7 @@ public class BondYieldCalc {
             if (Math.abs(fYTM(coupon, price, couponRate, face, years)) >= epsilon) {
                 return -1; // error
             }
-            mapperYield.put(newBondYield.toString(), (1-coupon) - 1);
+            mapperYield.put(newBondYield.toString(), (1/coupon) - 1);
             return (1 / coupon) - 1;
         }
         else{
@@ -79,9 +86,5 @@ public class BondYieldCalc {
        
     }
 
-    public static void main(String[] args) throws Exception {
-      
-     
-
-    }
+  
 }
