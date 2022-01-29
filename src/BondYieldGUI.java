@@ -15,6 +15,7 @@ import java.awt.GridLayout;
 import java.awt.event.*;
 import java.text.DecimalFormat;
 
+//test added comment for git on intellij
 public class BondYieldGUI extends JPanel implements ActionListener {
     private final JTextField couponP;
     private final JTextField yearsP;
